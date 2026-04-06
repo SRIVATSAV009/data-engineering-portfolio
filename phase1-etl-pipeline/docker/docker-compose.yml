@@ -1,0 +1,11 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: weather_pipeline_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: weather_pipeline
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
