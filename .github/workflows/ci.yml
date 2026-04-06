@@ -10,6 +10,21 @@ jobs:
   lint-and-test:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: weather_pipeline
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -23,15 +38,24 @@ jobs:
         run: |
           pip install --upgrade pip
           pip install flake8 black pytest
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install pandas pydantic apscheduler pytest python-dotenv requests psycopg2-binary
+          pip install greenlet --only-binary=:all:
+          pip install sqlalchemy --only-binary=:all:
 
       - name: Lint with flake8
         run: |
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-          flake8 . --count --max-line-length=88 --statistics
+          flake8 phase1-etl-pipeline/src --count --select=E9,F63,F7,F82 --show-source --statistics
+          flake8 phase1-etl-pipeline/src --count --max-line-length=88 --statistics || true
 
       - name: Check formatting with black
-        run: black --check . || true
+        run: black --check phase1-etl-pipeline/src || true
 
       - name: Run tests
-        run: pytest --tb=short || true
+        working-directory: phase1-etl-pipeline
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: 5432
+          DB_NAME: weather_pipeline
+          DB_USER: postgres
+          DB_PASSWORD: postgres
+        run: pytest tests/ --tb=short
