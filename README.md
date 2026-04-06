@@ -24,12 +24,12 @@
 
 ## 🚀 Projects
 
-| Project | Stack | Status |
-|---|---|---|
-| [ETL Weather Pipeline](https://github.com/YOUR_USERNAME/data-engineering-portfolio) | Python · pandas · PostgreSQL · APScheduler | 🔨 Building |
-| Airflow + dbt Data Warehouse | Airflow · dbt · BigQuery · Docker | 🔜 Phase 2 |
-| RAG Pipeline | LangChain · ChromaDB · OpenAI · FastAPI | 🔜 Phase 3 |
-| Autonomous Data Agent | LangGraph · MCP · Slack API | 🔜 Phase 4 |
+| Project                                                        | Stack                                      | Status                   |
+| -------------------------------------------------------------- | ------------------------------------------ | ------------------------ |
+| [ETL Weather Pipeline](./phase1-etl-pipeline)                  | Python · pandas · PostgreSQL · APScheduler | ✅ Completed (April 2026) |
+| [Airflow + dbt Data Warehouse](./phase2-airflow-dbt-warehouse) | Airflow · dbt · BigQuery · Docker          | ✅ Completed (April 2026) |
+| [RAG Pipeline](./phase3-rag-pipeline)                          | LangChain · ChromaDB · OpenAI · FastAPI    | 🔜 Phase 3               |
+| [Autonomous Data Agent](./phase4-autonomous-agent)             | LangGraph · MCP · Slack API                | 🔜 Phase 4               |
 
 ---
 
@@ -41,8 +41,9 @@
 - 🔜 LLM · RAG · Vector Databases
 - 🔜 MCP · AI Agents · LangGraph
 
+
 ---
 
 <p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=SRIVATSAV009&show_icons=true&theme=default&hide_border=true" />
+  <img src="https://github-readme-stats.vercel.app/api?username=SRIVATSAV009&show_icons=true&theme=radical&hide_border=true" />
 </p>
